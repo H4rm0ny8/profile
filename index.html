@@ -1,396 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ikrami Walid | Offensive Security Portfolio</title>
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --container-bg: #161b22;
-            --accent-color: #238636; /* GitHub green */
-            --accent-glow: rgba(35, 134, 54, 0.3);
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --text-link: #58a6ff;
-            --border-color: #30363d;
-            --terminal-green: #39ff14;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--container-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-
-        /* Header / Terminal Bar */
-        .terminal-header {
-            background-color: #21262d;
-            padding: 10px 15px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 6px;
-            margin-right: 15px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot-red { background-color: #f85149; }
-        .dot-yellow { background-color: #f0883e; }
-        .dot-green { background-color: #56d364; }
-
-        .terminal-title {
-            font-family: monospace;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* Main Profile Content */
-        .profile-body {
-            padding: 30px;
-        }
-
-        .hero-section {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-name {
-            font-size: 2.2rem;
-            color: #fff;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .hero-title {
-            font-family: monospace;
-            color: var(--terminal-green);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
-
-        .contact-links a {
-            color: var(--text-link);
-            text-decoration: none;
-        }
-
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Section Styling */
-        .section {
-            margin-top: 30px;
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            color: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title::before {
-            content: ">";
-            color: var(--terminal-green);
-            font-family: monospace;
-        }
-
-        .summary-text {
-            color: var(--text-main);
-            font-size: 1.05rem;
-            text-align: justify;
-        }
-
-        /* Grid for Skills and Certs */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media(min-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .card {
-            background-color: #0d1117;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px;
-        }
-
-        .card-title {
-            color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-family: monospace;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        li::before {
-            content: "•";
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .badge {
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-left: 5px;
-        }
-
-        .badge-inprogress {
-            background-color: #b07219;
-        }
-
-        /* Experience Item */
-        .exp-item {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .exp-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 5px;
-        }
-
-        .exp-company {
-            font-weight: bold;
-            color: #fff;
-            font-size: 1.1rem;
-        }
-
-        .exp-role {
-            color: var(--text-muted);
-            font-family: monospace;
-        }
-
-        .exp-bullets {
-            margin-top: 8px;
-            font-size: 0.95rem;
-        }
-
-        .exp-bullets li {
-            padding-left: 20px;
-        }
-        
-        .exp-bullets li::before {
-            content: "⚡";
-            font-size: 0.8rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-muted);
-            font-family: monospace;
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ikrami Walid | Offensive Security Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="scanlines">
 
-<div class="container">
-    <!-- Terminal Header Bar decoration -->
-    <div class="terminal-header">
-        <div class="terminal-buttons">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
+  <canvas id="hex-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <nav class="nav-dots" aria-label="Section navigation">
+    <button class="nav-dot active" data-target="hero" aria-label="Hero"></button>
+    <button class="nav-dot" data-target="summary" aria-label="Summary"></button>
+    <button class="nav-dot" data-target="experience" aria-label="Experience"></button>
+    <button class="nav-dot" data-target="skills" aria-label="Skills"></button>
+    <button class="nav-dot" data-target="education" aria-label="Education"></button>
+  </nav>
+
+  <main class="page">
+
+    <header class="hero visible" id="hero" data-section>
+      <div class="hero-hex-wrap">
+        <div class="hero-hex" aria-hidden="true">
+          <span class="hero-hex-inner">IW</span>
         </div>
-        <div class="terminal-title">ikrami@walid:~# cat portfolio.html</div>
-    </div>
+      </div>
+      <h1 class="hero-name">Ikrami Walid</h1>
+      <p class="hero-title" id="typewriter" aria-live="polite"></p>
 
-    <div class="profile-body">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <h1 class="hero-name">Ikrami Walid</h1>
-            <div class="hero-title">Penetration Tester | Information Security Student</div>
-            <div class="contact-links">
-                <a href="mailto:ikramiwmadi@gmail.com">📧 ikramiwmadi@gmail.com</a>
-                <a href="tel:+201091941192">📞 +201091941192</a>
-                <a href="#">🌐 GitHub Profile</a>
-                <a href="#">💼 LinkedIn</a>
-            </div>
+      <nav class="hex-social" aria-label="Social links">
+        <a class="hex-link" href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="hex-label">GitHub</span>
+        </a>
+        <a class="hex-link" href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span class="hex-label">LinkedIn</span>
+        </a>
+        <a class="hex-link" href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer" title="TryHackMe">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.4 3.7L12 11.58 4.6 7.88 12 4.18zM4 9.27l7 3.5v7.46l-7-3.5V9.27zm9 10.96v-7.46l7-3.5v7.46l-7 3.5z"/></svg>
+          <span class="hex-label">HTB/THM</span>
+        </a>
+      </nav>
+    </header>
+
+    <section class="section" id="summary" data-section>
+      <div class="section-header">
+        <div class="section-hex" aria-hidden="true"></div>
+        <h2 class="section-title"><span>//</span> Professional Summary</h2>
+      </div>
+      <div class="panel">
+        <p class="summary-text">
+          Ambitious Information Security student at the Faculty of Computers and Artificial Intelligence, Benha University, with a strong academic foundation and a deep passion for offensive security. Driven by an attacker's mindset, I actively develop my skills in penetration testing through intensive hands-on practice on advanced labs and real-world scenarios. I thrive on bridging the gap between exploitation techniques and defensive strategies, constantly pushing my limits as a self-motivated learner to master TTPs. Eager to apply my knowledge in practical red team engagements.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="experience" data-section>
+      <div class="section-header">
+        <div class="section-hex" aria-hidden="true"></div>
+        <h2 class="section-title"><span>//</span> Practical Offensive Experience</h2>
+      </div>
+      <div class="exp-list">
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <span class="exp-company">Infinity Learning Labs</span>
+            <span class="exp-role">Cyber Attack Simulation</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Executed complex Red Teaming scenarios in isolated environments, simulating real-world cyber attacks to identify infrastructure weaknesses.</li>
+            <li>Performed advanced Network Pivoting and Lateral Movement techniques across multiple subnets within Windows and Linux environments.</li>
+          </ul>
+        </article>
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <span class="exp-company">Bug Bounty Hunting</span>
+            <span class="exp-role">Independent Security Researcher</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Targeted high-scope programs to identify critical logic flaws, OWASP Top 10 vectors, and RCE vulnerabilities.</li>
+          </ul>
+        </article>
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <span class="exp-company">Capture The Flag (CTF)</span>
+            <span class="exp-role">HTB &amp; Platforms</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Regularly compete in challenges to sharpen offensive security skills, focusing on privilege escalation and network pivoting.</li>
+            <li>Demonstrated hands-on expertise in identifying and exploiting vulnerabilities (SQLi, XSS, RCE, and LFI) through various CTF platforms.</li>
+          </ul>
+        </article>
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <span class="exp-company">Security Tooling &amp; Automation</span>
+            <span class="exp-role">Python Developer</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Developed custom network security tools using Python and Socket programming to automate reconnaissance and service enumeration tasks.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills" data-section>
+      <div class="section-header">
+        <div class="section-hex" aria-hidden="true"></div>
+        <h2 class="section-title"><span>//</span> Technical Arsenal</h2>
+      </div>
+
+      <div class="skills-honeycomb" aria-label="Tools and skills">
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span class="skill-hex-label">Nmap</span>
         </div>
-
-        <!-- About Me / Summary -->
-        <div class="section">
-            <h2 class="section-title">Professional Summary</h2>
-            <p class="summary-text">
-                Ambitious Information Security student at the Faculty of Computers and Artificial Intelligence, Benha University, with a strong academic foundation and a deep passion for offensive security. Driven by an attacker's mindset, I actively develop my skills in penetration testing through intensive hands-on practice on advanced labs and real-world scenarios. I thrive on bridging the gap between exploitation techniques and defensive strategies, constantly pushing my limits as a self-motivated learner to master TTPs. Eager to apply my knowledge in practical red team engagements.
-            </p>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="skill-hex-label">Burp Suite</span>
         </div>
-
-        <!-- Practical Experience -->
-        <div class="section">
-            <h2 class="section-title">Practical Offensive Experience</h2>
-            
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">Infinity Learning Labs</span>
-                    <span class="exp-role">Cyber Attack Simulation & Lab Practitioner</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Executed complex Red Teaming scenarios in isolated environments, simulating real-world cyber attacks to identify infrastructure weaknesses.</li>
-                    <li>Performed advanced Network Pivoting and Lateral Movement techniques across multiple subnets within Windows and Linux environments.</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">Bug Bounty Hunting</span>
-                    <span class="exp-role">Independent Security Researcher</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Targeted high-scope programs to identify critical logic flaws, OWASP Top 10 vectors, and RCE vulnerabilities.</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">Capture The Flag (CTF)</span>
-                    <span class="exp-role">Active Participant (HTB & Platforms)</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Regularly compete in challenges to sharpen offensive security skills, focusing on privilege escalation and network pivoting.</li>
-                    <li>Demonstrated hands-on expertise in identifying and exploiting vulnerabilities (SQLi, XSS, RCE, and LFI) through various CTF platforms.</li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">Security Tooling & Automation</span>
-                    <span class="exp-role">Python Developer</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Developed custom network security tools using Python and Socket programming to automate reconnaissance and service enumeration tasks.</li>
-                </ul>
-            </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="skill-hex-label">Metasploit</span>
         </div>
-
-        <!-- Two column layout for Skills and Certs -->
-        <div class="grid-2">
-            <!-- Technical Skills -->
-            <div class="section">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="card">
-                    <div class="card-title">Tools & Frameworks</div>
-                    <ul>
-                        <li>Nmap, Burp Suite, Wireshark</li>
-                        <li>Metasploit, Hydra, Aircrack-ng</li>
-                        <li>Gobuster, Linux & Windows Systems</li>
-                        <li>Bash, PowerShell Scripting</li>
-                    </ul>
-                    <div class="card-title" style="margin-top:15px;">Languages</div>
-                    <ul>
-                        <li>Python, C++, PHP, HTML</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Certifications -->
-            <div class="section">
-                <h2 class="section-title">Certifications & Training</h2>
-                <div class="card">
-                    <ul>
-                        <li><strong>CPTS</strong> - Certified Penetration Testing Specialist <span class="badge badge-inprogress">In Progress</span></li>
-                        <li><strong>OSWP</strong> - Offensive Security Wireless Professional <span class="badge">Self-Studied</span></li>
-                        <li><strong>CCNA</strong> - Cisco Certified Network Associate</li>
-                        <li><strong>Qualys VMDR</strong> - Vulnerability Management</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span class="skill-hex-label">Wireshark</span>
         </div>
-
-        <!-- Education -->
-        <div class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">Benha University</span>
-                    <span class="exp-role">Faculty of Computers & Artificial Intelligence</span>
-                </div>
-                <p style="font-size:0.95rem; color:var(--text-muted); margin-top:5px;">
-                    Major: Information Security | Relevant Coursework: Data Structures, Operating Systems, Database Systems, Digital Forensics, OOP.
-                </p>
-            </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+          <span class="skill-hex-label">Bash / PS</span>
         </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+          <span class="skill-hex-label">Python</span>
+        </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span class="skill-hex-label">Linux / Win</span>
+        </div>
+        <div class="skill-hex" tabindex="0">
+          <svg class="skill-hex-icon" viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          <span class="skill-hex-label">Gobuster</span>
+        </div>
+      </div>
 
-    </div>
+      <div class="panel skill-meter" style="margin-top:1.5rem">
+        <div class="meter-row">
+          <span class="meter-label">Pentesting</span>
+          <div class="meter-track"><div class="meter-fill" data-width="88%"></div></div>
+        </div>
+        <div class="meter-row">
+          <span class="meter-label">Networking</span>
+          <div class="meter-track"><div class="meter-fill" data-width="82%"></div></div>
+        </div>
+        <div class="meter-row">
+          <span class="meter-label">Scripting</span>
+          <div class="meter-track"><div class="meter-fill" data-width="75%"></div></div>
+        </div>
+        <div class="meter-row">
+          <span class="meter-label">Web Apps</span>
+          <div class="meter-track"><div class="meter-fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:1.5rem">
+        <div class="panel">
+          <h3 class="card-subtitle">Languages</h3>
+          <ul class="card-list">
+            <li>Python, C++, PHP, HTML</li>
+          </ul>
+          <h3 class="card-subtitle">Additional Tools</h3>
+          <ul class="card-list">
+            <li>Hydra, Aircrack-ng, Gobuster</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 class="card-subtitle">Certifications</h3>
+          <ul class="card-list">
+            <li><strong>CPTS</strong> — Certified Penetration Testing Specialist <span class="badge badge-progress">In Progress</span></li>
+            <li><strong>OSWP</strong> — Offensive Security Wireless Professional <span class="badge badge-done">Self-Studied</span></li>
+            <li><strong>CCNA</strong> — Cisco Certified Network Associate</li>
+            <li><strong>Qualys VMDR</strong> — Vulnerability Management</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education" data-section>
+      <div class="section-header">
+        <div class="section-hex" aria-hidden="true"></div>
+        <h2 class="section-title"><span>//</span> Education</h2>
+      </div>
+      <article class="exp-card">
+        <div class="exp-card-header">
+          <span class="exp-company">Benha University</span>
+          <span class="exp-role">Faculty of Computers &amp; AI</span>
+        </div>
+        <p style="font-size:0.92rem;color:var(--text-muted);margin-top:0.35rem">
+          Major: Information Security &mdash; Relevant Coursework: Data Structures, Operating Systems, Database Systems, Digital Forensics, OOP.
+        </p>
+      </article>
+    </section>
 
     <footer>
-        &lt;/&gt; Designed for Ikrami Walid Profile © 2026
+      <span class="hex-dot" aria-hidden="true"></span>
+      Designed for Ikrami Walid &copy; 2026
+      <span class="hex-dot" aria-hidden="true"></span>
     </footer>
-</div>
 
+  </main>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
