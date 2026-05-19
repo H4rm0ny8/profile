@@ -342,6 +342,36 @@ body:hover .cursor-glow {
   font-size: 1.05rem;
 }
 
+.exp-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.exp-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  transition: color 0.2s;
+}
+
+.exp-tag::before {
+  content: "→ ";
+  color: var(--green-dim);
+}
+
+.exp-tag:hover {
+  color: var(--green);
+}
+
+.exp-tag:hover::before {
+  color: var(--green);
+}
+
 .exp-role {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -371,35 +401,6 @@ body:hover .cursor-glow {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   background: var(--green);
   opacity: 0.7;
-}
-
-.exp-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.75rem;
-  padding: 0.35rem 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--green);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  background: var(--green-soft);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-}
-
-.exp-link svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-  flex-shrink: 0;
-}
-
-.exp-link:hover {
-  border-color: var(--green);
-  box-shadow: 0 0 12px var(--green-glow);
-  transform: translateX(4px);
 }
 
 /* ── Skills honeycomb grid ── */

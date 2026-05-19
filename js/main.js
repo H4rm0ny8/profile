@@ -176,6 +176,7 @@ sections.forEach((s) => sectionObserver.observe(s));
 /* ── Experience card tilt ── */
 document.querySelectorAll(".exp-card").forEach((card) => {
   card.addEventListener("mousemove", (e) => {
+    if (e.target.closest("a")) return;
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
