@@ -221,6 +221,20 @@ body:hover .cursor-glow {
   fill: var(--green);
 }
 
+.hex-link .icon-medium {
+  width: 24px;
+  height: 24px;
+}
+
+.hex-link .icon-medium path {
+  fill: var(--text-muted);
+  transition: fill 0.25s ease;
+}
+
+.hex-link:hover .icon-medium path {
+  fill: var(--green);
+}
+
 .hex-link .hex-label {
   position: absolute;
   bottom: -1.4rem;
